@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Archive - twobip.com</title>
+    <style>
+        body {
+            background-color: #000000;
+            background-image: url('images/background.gif');
+            color: #ffffff;
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #ffffff;
+            background-color: #000080;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            border: 4px ridge #808080;
+            background-color: #1a1a1a; /* Dark Grey/Black */
+            color: #ffffff;
+            box-shadow: 10px 10px 5px rgba(0,0,0,0.5);
+        }
+
+        .header {
+            background: linear-gradient(to right, #000033, #000080);
+            color: #00ffff;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .main-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sidebar {
+            width: 200px;
+            vertical-align: top;
+            background-color: #262626;
+            border-right: 2px solid #404040;
+            padding: 10px;
+        }
+
+        .content {
+            vertical-align: top;
+            padding: 25px;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            border-top: 2px solid #ffffff;
+            font-size: 0.9em;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        marquee {
+            background-color: #0f12c4;
+            color: #ff0000;
+            font-weight: bold;
+            padding: 5px;
+        }
+
+        .counter {
+            background-color: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 2px 5px;
+            border: 1px solid #ffffff;
+        }
+
+        h1 {
+            text-shadow: 2px 2px #000000;
+        }
+
+        .under-construction {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        ul.nav-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul.nav-links li {
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 2px outset #404040;
+            background-color: #333333;
+            text-align: center;
+        }
+
+        ul.nav-links li a {
+            color: #00ffff;
+            text-decoration: none;
+            display: block;
+            font-weight: bold;
+        }
+
+        ul.nav-links li:hover {
+            border-style: inset;
+        }
+
+        .news-item {
+            border: 2px inset #404040;
+            background-color: #1f1f1f;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .news-header {
+            color: #00ffff;
+            font-weight: bold;
+            border-bottom: 1px solid #404040;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+        
+        .news-date {
+            color: #888888;
+            font-size: 0.8em;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <marquee>twobip.com is 100% elephant free</marquee>
+        </div>
+
+        <table class="main-table">
+            <tr>
+                <td class="sidebar">
+                    <h3>Navigation</h3>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="mystuff.html">My stuff</a></li>
+                        <li><a href="wardriving.html">Wardriving</a></li>
+                        <li><a href="proxmox.html">Proxmox</a></li>
+                        <li><a href="https://status.twobip.com">Status Page</a></li>
+                        <li><a href="links.html">Cool Links</a></li>
+                    </ul>
+                    <hr>
+                    <div style="text-align: center;">
+                        <img src="images/construction.gif" alt="Under Construction" style="width: 100px;">
+                        <p><small>Site last updated:<br><span id="last-updated">now</span></small></p>
+                    </div>
+                </td>
+                <td class="content">
+                    <h1>News Archive</h1>
+                    <p>This is all the news and things i have posted on the front page that arent there anymore because there is only room for 2 things</p>
+                    
+                    <hr>
+
+                    <div class="news-item">
+                        <div class="news-header">I updated the wigle stats</div>
+                        <div class="news-date">Posted on: May 21, 2026 at 11:43 PM</div>
+                        <p>I updated the wigle stats as of 21 may 2026 i havent done mays yet because the month isnt finished but i will next month</p>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-header">Tatty Analytics</div>
+                        <div class="news-date">Posted on: May 21, 2026 at 11:41 PM</div>
+                        <p>I accidentally had cloudflare analytics on so it was injecting things into the website but i have turned it off now :D</p>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-header">Drastic website changes</div>
+                        <div class="news-date">Posted on: May 21, 2026 at 11:40 PM</div>
+                        <p>I changed a few words of some of the things i would list them here but it was like 30 mins ago and i forgot them</p>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-header">I made the website</div>
+                        <div class="news-date">Posted on: May 21, 2026 at 11:39 PM</div>
+                        <p>I have made this website today hopefully there is nothing wrong with it</p>
+                    </div>
+
+                    <div class="under-construction">
+                        <img src="images/construction.gif" alt="Working hard">
+                        <h3>More news coming when i can think of things to do</h3>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="footer">
+            <p>
+                Visitor Count: <span class="counter">calculating...</span>
+            </p>
+            <p>
+                This page is best viewed with
+                <img src="images/netscape.gif" alt="Netscape">
+            </p>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const updates = [
+                "May 21, 1998",
+                "Yesterday",
+                "January 1, 1970",
+                "5 seconds ago",
+                "17.792 seconds ago",
+                "100 hours ago",
+                "National Spongebob Day",
+                "Tomorrow",
+                "never",
+                "100 MILLION GAZILLION YEARS AGO",
+                "17"
+            ];
+            const randomIndex = Math.floor(Math.random() * updates.length);
+            document.getElementById('last-updated').textContent = updates[randomIndex];
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+const terminal = document.getElementById('terminal');
+const editor = document.getElementById('editor');
+const editorTextarea = document.getElementById('editor-textarea');
+const editorSave = document.getElementById('editor-save');
+const editorCancel = document.getElementById('editor-cancel');
+
+let currentPath = ['/home', 'linux'];
+let filesystem = {};
+let commandHistory = [];
+let historyIndex = -1;
+let currentInput = '';
+let editingFile = null;
+
+// Load FS or initialize
+function initFilesystem() {
+  const saved = localStorage.getItem('fakeFS');
+  if (saved) {
+    filesystem = JSON.parse(saved);
+  } else {
+    filesystem = {
+      home: {
+        linux: {
+          documents: {
+            'notes.txt': 'This is a training file.\n',
+          },
+          downloads: {},
+        },
+      },
+      etc: {
+        'config.txt': 'Configuration settings.\n',
+      },
+      var: {
+        log: {
+          'system.log': 'System boot successful.\n',
+        },
+      },
+      tmp: {},
+      root: {
+        'secret.txt': 'Top secret root-only file.\n',
+      },
+    };
+  }
+}
+
+function saveFilesystem() {
+  localStorage.setItem('fakeFS', JSON.stringify(filesystem));
+}
+
+function resetFilesystem() {
+  localStorage.removeItem('fakeFS');
+  initFilesystem();
+}
+
+// Helpers
+function pathToString(pathArray) {
+  return pathArray.length > 1 ? pathArray.join('/') : '/';
+}
+
+function getCurrentDir() {
+  let dir = filesystem;
+  for (const p of currentPath.slice(1)) {
+    if (!dir[p]) return null;
+    dir = dir[p];
+  }
+  return dir;
+}
+
+function resolvePath(path) {
+  if (!path) return [...currentPath];
+  let parts = path.split('/').filter(p => p.length);
+  let newPath = path.startsWith('/') ? ['/'] : [...currentPath];
+  for (const part of parts) {
+    if (part === '.') continue;
+    if (part === '..') {
+      if (newPath.length > 1) newPath.pop();
+    } else {
+      newPath.push(part);
+    }
+  }
+  return newPath;
+}
+
+function getDirFromPath(pathArray) {
+  let dir = filesystem;
+  for (const p of pathArray.slice(1)) {
+    if (typeof dir[p] === 'string') return null;
+    dir = dir[p];
+    if (!dir) return null;
+  }
+  return dir;
+}
+
+function isFile(pathArray) {
+  let dir = filesystem;
+  for (const p of pathArray.slice(1, -1)) {
+    dir = dir[p];
+    if (!dir) return false;
+  }
+  return typeof dir[pathArray[pathArray.length - 1]] === 'string';
+}
+
+// Terminal functions
+function print(text = '') {
+  terminal.innerHTML += text + '\n';
+  terminal.scrollTop = terminal.scrollHeight;
+}
+
+function prompt() {
+  terminal.innerHTML += `<span class="prompt">linux@debian:${pathToString(currentPath)}$ </span>`;
+}
+
+function handleCommand(input) {
+  const args = input.trim().split(' ').filter(arg => arg.length);
+  const cmd = args[0];
+  const params = args.slice(1);
+  switch (cmd) {
+    case 'pwd':
+      print(pathToString(currentPath));
+      break;
+    case 'ls':
+      const dir = getCurrentDir();
+      if (dir) {
+        print(Object.keys(dir).join('    '));
+      } else {
+        print('ls: cannot access directory');
+      }
+      break;
+    case 'cd':
+      if (params.length === 0) {
+        currentPath = ['/home', 'linux'];
+      } else {
+        const newPath = resolvePath(params[0]);
+        const dirTest = getDirFromPath(newPath);
+        if (dirTest) {
+          if (newPath.includes('root')) {
+            print('cd: Permission denied');
+          } else {
+            currentPath = newPath;
+          }
+        } else {
+          print('cd: no such file or directory: ' + params[0]);
+        }
+      }
+      break;
+    case 'cat':
+      if (params.length === 0) {
+        print('cat: missing file operand');
+      } else {
+        const filePath = resolvePath(params[0]);
+        if (isFile(filePath)) {
+          let dir = getDirFromPath(filePath.slice(0, -1));
+          print(dir[filePath[filePath.length - 1]]);
+        } else {
+          print('cat: ' + params[0] + ': No such file');
+        }
+      }
+      break;
+    case 'touch':
+      if (params.length === 0) {
+        print('touch: missing file operand');
+      } else {
+        let dir = getCurrentDir();
+        dir[params[0]] = '';
+        saveFilesystem();
+      }
+      break;
+    case 'mkdir':
+      if (params.length === 0) {
+        print('mkdir: missing operand');
+      } else {
+        let dir = getCurrentDir();
+        dir[params[0]] = {};
+        saveFilesystem();
+      }
+      break;
+    case 'rm':
+      if (params.length === 0) {
+        print('rm: missing operand');
+      } else {
+        const target = params[0];
+        let dir = getCurrentDir();
+        if (dir[target]) {
+          delete dir[target];
+          saveFilesystem();
+        } else {
+          print('rm: cannot remove ' + target + ': No such file or directory');
+        }
+      }
+      break;
+    case 'clear':
+      terminal.innerHTML = '';
+      break;
+    case 'nano':
+      if (params.length === 0) {
+        print('nano: missing file operand');
+      } else {
+        const filePath = resolvePath(params[0]);
+        editingFile = filePath;
+        openEditor(filePath);
+      }
+      break;
+    case 'reset':
+      resetFilesystem();
+      currentPath = ['/home', 'linux'];
+      print('Filesystem reset.');
+      break;
+    case '':
+      break;
+    default:
+      print(cmd + ': command not found');
+  }
+}
+
+function openEditor(filePath) {
+  let dir = getDirFromPath(filePath.slice(0, -1));
+  let fileName = filePath[filePath.length - 1];
+  let content = (dir && dir[fileName]) ? dir[fileName] : '';
+  editorTextarea.value = content;
+  editor.classList.remove('hidden');
+}
+
+// Event listeners
+document.addEventListener('keydown', (e) => {
+  if (editor.classList.contains('hidden')) {
+    if (e.key === 'Enter') {
+      print(`linux@debian:${pathToString(currentPath)}$ ${currentInput}`);
+      handleCommand(currentInput);
+      commandHistory.unshift(currentInput);
+      historyIndex = -1;
+      currentInput = '';
+      prompt();
+      e.preventDefault();
+    } else if (e.key === 'Backspace') {
+      currentInput = currentInput.slice(0, -1);
+    } else if (e.key === 'ArrowUp') {
+      if (commandHistory.length > 0) {
+        historyIndex = (historyIndex + 1) % commandHistory.length;
+        currentInput = commandHistory[historyIndex];
+      }
+    } else if (e.key === 'ArrowDown') {
+      if (commandHistory.length > 0) {
+        historyIndex = historyIndex > 0 ? historyIndex - 1 : 0;
+        currentInput = commandHistory[historyIndex];
+      }
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      autocomplete();
+    } else if (e.key.length === 1) {
+      currentInput += e.key;
+    }
+    updateTerminalInput();
+  }
+});
+
+function autocomplete() {
+  const words = currentInput.trim().split(' ');
+  const lastWord = words[words.length - 1];
+  const dir = getCurrentDir();
+  const matches = Object.keys(dir).filter(name => name.startsWith(lastWord));
+  if (matches.length === 1) {
+    words[words.length - 1] = matches[0];
+    currentInput = words.join(' ') + ' ';
+  } else if (matches.length > 1) {
+    print(matches.join('    '));
+  }
+}
+
+function updateTerminalInput() {
+  const prompts = document.getElementsByClassName('prompt');
+  const lastPrompt = prompts[prompts.length - 1];
+  if (lastPrompt) {
+    lastPrompt.innerHTML = `linux@debian:${pathToString(currentPath)}$ ${currentInput}`;
+  }
+}
+
+// Initialize
+initFilesystem();
+print('Welcome to the Linux Training Terminal.');
+prompt();

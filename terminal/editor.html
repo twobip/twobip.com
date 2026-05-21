@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <textarea id="editor" style="width: 100%; height: 90vh;"></textarea><br>
+    <button onclick="save()">Save</button>
+    <button onclick="cancel()">Cancel</button>
+    <textarea id="editor-textarea"></textarea>
+<div class="nano-status-bar">
+  <span>^O Save</span>
+  <span>^X Exit</span>
+</div>
+
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const file = params.get('file') || 'untitled.txt';
+
+        function save() {
+            alert('Saved ' + file + ' (simulated)');
+            window.location.href = 'index.html';
+        }
+
+        function cancel() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

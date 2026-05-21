@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My stuff on twobip.com</title>
+    <style>
+        body {
+            background-color: #000000;
+            background-image: url('images/background.gif');
+            color: #ffffff;
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #ffffff;
+            background-color: #000080;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            border: 4px ridge #808080;
+            background-color: #1a1a1a; /* Dark Grey/Black */
+            color: #ffffff;
+            box-shadow: 10px 10px 5px rgba(0,0,0,0.5);
+        }
+
+        .header {
+            background: linear-gradient(to right, #000033, #000080);
+            color: #00ffff;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .main-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sidebar {
+            width: 200px;
+            vertical-align: top;
+            background-color: #262626;
+            border-right: 2px solid #404040;
+            padding: 10px;
+        }
+
+        .content {
+            vertical-align: top;
+            padding: 25px;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            border-top: 2px solid #ffffff;
+            font-size: 0.9em;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        marquee {
+            background-color: #0f12c4;
+            color: #ff0000;
+            font-weight: bold;
+            padding: 5px;
+        }
+
+        .counter {
+            background-color: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 2px 5px;
+            border: 1px solid #ffffff;
+        }
+
+        h1 {
+            text-shadow: 2px 2px #000000;
+        }
+
+        .under-construction {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        ul.nav-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul.nav-links li {
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 2px outset #404040;
+            background-color: #333333;
+            text-align: center;
+        }
+
+        ul.nav-links li a {
+            color: #00ffff;
+            text-decoration: none;
+            display: block;
+            font-weight: bold;
+        }
+
+        ul.nav-links li:hover {
+            border-style: inset;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <marquee>twobip.com is hosted on a hp z440 running proxmox</marquee>
+        </div>
+
+        <table class="main-table">
+            <tr>
+                <td class="sidebar">
+                    <h3>Navigation</h3>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="mystuff.html">My stuff</a></li>
+                        <li><a href="wardriving.html">Wardriving</a></li>
+                        <li><a href="proxmox.html">Proxmox</a></li>
+                        <li><a href="https://status.twobip.com">Status Page</a></li>
+                        <li><a href="links.html">Cool Links</a></li>
+                    </ul>
+                    <hr>
+                    <div style="text-align: center;">
+                        <img src="images/construction.gif" alt="Under Construction" style="width: 100px;">
+                        <p><small>Site last updated:<br><span id="last-updated">now</span></small></p>
+                    </div>
+                </td>
+                <td class="content">
+                    <h1>My stuff</h1>
+                    <h3>My self hosted things and other things that are mine</h3>
+                    <p>
+                       I am currently hosting these public services (might be more if i find any more)
+                    </p>
+                        <ul style="list-style-type: none; padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">
+                            <a href="https://search.twobip.com" style="text-decoration: none;">
+                                <img src="images/redball.gif" alt="red ball" border="0" style="vertical-align: middle;">
+                                <b>SearXNG</b>
+                            </a> 
+                            - My searxng instance (it might be a bit slow)
+                        </li> 
+                        <li style="margin-bottom: 10px;">
+                            <a href="https://warden.twobip.com" style="text-decoration: none;">
+                                <img src="images/redball.gif" alt="red ball" border="0" style="vertical-align: middle;">
+                                <b>Vaultwarden</b>
+                            </a> 
+                            - My vaultwarden instance (probably dont use this as your main vaultwarden server incase i do something stupid and wipe all the data)
+                        </li> 
+                    </ul>
+                    <p>
+                        Click on the red ball if you want to go to any of them
+                    </p> 
+                    
+                    <h2>My UniFi setup</h2>
+                    <p>I have a Unifi cloud gateway ultra and i have had it since like june or july 2025 i cant remember but it has been very good and it has made me buy more unifi things like i have 4 access points 
+                    i probably dont need that many but they can also reach to the top of my garden so my whole house and garden has wifi now</p>
+                    <img src="images/unifi_devices.png" alt="my unifi devices" style="width: 500px;">
+                    <p>2 of them are meshing which i dont like but it is the only option because i cant run any wires to them <br>
+                    Also i route all of my internet traffic through protonvpn you can do this on the ucg ultra itself but i have it going through an opnsense vm on my proxmox server so it shows up as WAN2 and i can see the stats</p>
+                    <img src="images/wan2.png" alt="wan2" style="width: 250px;">
+                    <p>That is my ping time through a vpn that is quite good it only adds like 1-2ms and my home connection is adsl and it only has 9-10ms ping which is better than some peoples fibre connections i have seen on youtube so i dont know how that works the vpn doesnt add much latency so i never notice it only when there is those captcha things it does make more of them appear but it is better than having my isp log every ip and dns request i am doing for 12 months i dont like that</p>
+
+                </td>
+            </tr>
+        </table>
+
+        <div class="footer">
+            <p>
+                Visitor Count: <span class="counter">one hunderad billion</span>
+            </p>
+            <p>
+                This page is best viewed with
+                <img src=images/netscape.gif alt="Netscape">
+            </p>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const updates = [
+                "May 21, 1998",
+                "Yesterday",
+                "January 1, 1970",
+                "5 seconds ago",
+                "17.792 seconds ago",
+                "100 hours ago",
+                "National Spongebob Day",
+                "Tomorrow",
+                "never",
+                "100 MILLION GAZILLION YEARS AGO",
+                "17"
+            ];
+            const randomIndex = Math.floor(Math.random() * updates.length);
+            document.getElementById('last-updated').textContent = updates[randomIndex];
+        })();
+    </script>
+</body>
+</html>
