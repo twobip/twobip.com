@@ -37,6 +37,34 @@
         { name: "Cool Links", url: "links.html" }
     ];
 
+    const newsItems = [
+        {
+            title: "I added the adsb page",
+            date: "May 22, 2026 at 10:45 AM",
+            content: "I added the adsb page so you can see the planes and things now"
+        },
+        {
+            title: "I updated the wigle stats",
+            date: "May 21, 2026 at 11:43 PM",
+            content: "I updated the wigle stats as of 21 may 2026 i havent done mays yet because the month isnt finished but i will next month"
+        },
+        {
+            title: "Tatty Analytics",
+            date: "May 21, 2026 at 11:41 PM",
+            content: "I accidentally had cloudflare analytics on so it was injecting things into the website but i have turned it off now :D"
+        },
+        {
+            title: "Drastic website changes",
+            date: "May 21, 2026 at 11:40 PM",
+            content: "I changed a few words of some of the things i would list them here but it was like 30 mins ago and i forgot them"
+        },
+        {
+            title: "I made the website",
+            date: "May 21, 2026 at 11:39 PM",
+            content: "I have made this website today hopefully there is nothing wrong with it"
+        }
+    ];
+
     function generateSidebar() {
         const sidebarContainer = document.getElementById('sidebar-container');
         if (!sidebarContainer) return;
@@ -51,6 +79,29 @@
         </div>`;
 
         sidebarContainer.innerHTML = html;
+    }
+
+    function generateNews() {
+        const homeContainer = document.getElementById('news-container-home');
+        const fullContainer = document.getElementById('news-container-full');
+
+        const createNewsHtml = (items) => {
+            return items.map(item => `
+                <div class="news-item">
+                    <div class="news-header">${item.title}</div>
+                    <div class="news-date">Posted on: ${item.date}</div>
+                    <p>${item.content}</p>
+                </div>
+            `).join('');
+        };
+
+        if (homeContainer) {
+            homeContainer.innerHTML = createNewsHtml(newsItems.slice(0, 2));
+        }
+
+        if (fullContainer) {
+            fullContainer.innerHTML = createNewsHtml(newsItems);
+        }
     }
 
     function randomize() {
@@ -70,6 +121,7 @@
 
     function init() {
         generateSidebar();
+        generateNews();
         randomize();
     }
 
