@@ -124,7 +124,7 @@
 
     <div class="container">
         <div class="header">
-            <marquee>twobip.com has a guarantee of 9% uptime</marquee>
+            <marquee id="marquee-text">twobip.com has a guarantee of 9% uptime</marquee>
         </div>
 
         <table class="main-table">
@@ -176,24 +176,6 @@
         </div>
     </div>
 
-    <script>
-        (function() {
-            const updates = [
-                "May 21, 1998",
-                "Yesterday",
-                "January 1, 1970",
-                "5 seconds ago",
-                "17.792 seconds ago",
-                "100 hours ago",
-                "National Spongebob Day",
-                "Tomorrow",
-                "never",
-                "100 MILLION GAZILLION YEARS AGO",
-                "17"
-            ];
-            const randomIndex = Math.floor(Math.random() * updates.length);
-            document.getElementById('last-updated').textContent = updates[randomIndex];
-        })();
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
