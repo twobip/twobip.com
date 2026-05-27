@@ -71,11 +71,26 @@
             color: #ffffff;
         }
 
-        marquee {
+        .marquee-container {
             background-color: #0f12c4;
             color: #ff0000;
             font-weight: bold;
             padding: 5px;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            height: 1.2em;
+        }
+
+        .marquee-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee-scroll 20s linear infinite;
+        }
+
+        @keyframes marquee-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
 
         .counter {
@@ -124,7 +139,9 @@
 
     <div class="container">
         <div class="header">
-            <marquee id="marquee-text">twobip.com probably exists</marquee>
+            <div class="marquee-container">
+                <div id="marquee-text" class="marquee-text">twobip.com probably exists</div>
+            </div>
         </div>
 
         <table class="main-table">

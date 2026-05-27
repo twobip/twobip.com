@@ -111,6 +111,16 @@
         if (marqueeElement) {
             const randomMarquee = marqueeMessages[Math.floor(Math.random() * marqueeMessages.length)];
             marqueeElement.textContent = randomMarquee;
+            
+            // Fixed speed logic
+            // We wait a tiny bit to ensure the text has rendered so we can get accurate width
+            setTimeout(() => {
+                const textWidth = marqueeElement.offsetWidth;
+                const containerWidth = marqueeElement.parentElement.offsetWidth;
+                const speed = 100; // pixels per second (adjust this for faster/slower)
+                const duration = textWidth / speed;
+                marqueeElement.style.animationDuration = duration + 's';
+            }, 50);
         }
 
         if (lastUpdatedElement) {
