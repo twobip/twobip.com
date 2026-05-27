@@ -39,6 +39,11 @@
 
     const newsItems = [
         {
+            title: "No more marquees",
+            date: "May 27, 2026 at 12:33 PM",
+            content: "The marquees now use css keyframes and are hardware accelerated because it was lagging on my ipad"
+        },
+        {
             title: "I added the adsb page",
             date: "May 22, 2026 at 10:45 AM",
             content: "I added the adsb page so you can see the planes and things now"
