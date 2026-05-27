@@ -41,7 +41,7 @@
         {
             title: "No more marquees",
             date: "May 27, 2026 at 12:33 PM",
-            content: "The marquees now use css keyframes and are hardware accelerated because it was lagging on my ipad"
+            content: "The marquees now use css keyframes and are hardware accelerated because it was lagging on my ipad <br> UPDATE: it works good on my ipad now"
         },
         {
             title: "I added the adsb page",
