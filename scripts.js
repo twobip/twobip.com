@@ -40,6 +40,11 @@
 
     const newsItems = [
         {
+            title: "May wigle stats",
+            date: "June 7, 2026 at 3:55 PM",
+            content: "I updated the wigle stats for may not really a good month only 15k but this month seems like its going to be lower"
+        },
+        {
             title: "Photography page",
             date: "June 7, 2026 at 3:34 PM",
             content: "I added the photography page so now you can look at all the rats and pigeons in my garden"
