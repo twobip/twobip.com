@@ -33,11 +33,17 @@
         { name: "Wardriving", url: "wardriving.html" },
         { name: "Proxmox", url: "proxmox.html" },
         { name: "ADS-B", url: "adsb.html" },
+        { name: "Photography", url: "photography.html" },
         { name: "Status Page", url: "https://status.twobip.com" },
         { name: "Cool Links", url: "links.html" }
     ];
 
     const newsItems = [
+        {
+            title: "Photography page",
+            date: "June 7, 2026 at 3:34 PM",
+            content: "I added the photography page so now you can look at all the rats and pigeons in my garden"
+        },
         {
             title: "No more marquees",
             date: "May 27, 2026 at 12:33 PM",
