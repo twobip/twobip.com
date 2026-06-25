@@ -41,6 +41,11 @@
 
     const newsItems = [
         {
+            title: "Network page",
+            date: "June 25, 2026 at 11:42 PM",
+            content: "I added a whole page for the network instead of just a tiny section on my stuff and i also increased the front page news items to 3"
+        },
+        {
             title: "May wigle stats",
             date: "June 7, 2026 at 3:55 PM",
             content: "I updated the wigle stats for may not really a good month only 15k but this month seems like its going to be lower"
@@ -113,7 +118,7 @@
         };
 
         if (homeContainer) {
-            homeContainer.innerHTML = createNewsHtml(newsItems.slice(0, 2));
+            homeContainer.innerHTML = createNewsHtml(newsItems.slice(0, 3));
         }
 
         if (fullContainer) {
