@@ -31,6 +31,7 @@
         { name: "News", url: "news.html" },
         { name: "My stuff", url: "mystuff.html" },
         { name: "Wardriving", url: "wardriving.html" },
+        { name: "Network", url: "network.html" },
         { name: "Proxmox", url: "proxmox.html" },
         { name: "ADS-B", url: "adsb.html" },
         { name: "Photography", url: "photography.html" },
