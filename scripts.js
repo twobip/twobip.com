@@ -41,6 +41,11 @@
 
     const newsItems = [
         {
+            title: "June wigle stats",
+            date: "July 6, 2026 at 6:23 PM",
+            content: "I updated the wigle stats for june i almost got more than may but i forgot to do it at maccas so i didnt"
+        },
+        {
             title: "Network page",
             date: "June 25, 2026 at 11:42 PM",
             content: "I added a whole page for the network instead of just a tiny section on my stuff and i also increased the front page news items to 3"
