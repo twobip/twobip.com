@@ -23,23 +23,23 @@
                 <td class="content">
                     <h1>My network</h1>
                     <h3>My unifi network</h3>
-                    <img src="images/unifi_setup_night.webp" alt="my unifi setup" style="width: 400px;">
+                    <img src="images/unifi_setup.webp" alt="my unifi setup" style="width: 400px;">
+                    <h5>cable management isnt real</h6>
                     <p>
-                    My main gateway is the UniFi Cloud Gateway ultra it is good enough for my needs (my internet is 40mbps down 8mbps up vdsl) but i want a udm pro
+                    My main gateway is the UniFi Cloud Gateway ultra it is good enough for my needs (my internet is 40mbps down 8mbps up vdsl) but i want a udm pro<br>
+                    Hopefully i will eventually get a rack so it isnt just lying on a falling apart crayola table
                     </p>
                     <h2>My UniFi devices</h2>
-                    <p>I have had the UCG ultra since like june or july 2025 i cant remember but it has been very good and it has made me buy more unifi things like i have 4 access points 
+                    <p>I have had the UCG ultra since like may 2025 i cant remember but it has been very good and it has made me buy more unifi things like i have 9 unifi devices and 5 access points 
                     i probably dont need that many but they can also reach to the top of my garden so my whole house and garden has wifi now</p>
                     <img src="images/unifi_devices.png" alt="my unifi devices" style="width: 550px;">
-                    <p>3 of them are running over gigabit powerline with 5 TL-PA8010ps that can pass through vlan tags so i can use them for aps and switches instead of mesh which was unreliable</p>
                     <h2>Traffic</h2>
                     <p>All of my traffic is routed through Mullvad VPN (i used to use proton but it hasnt updated in the screenshot) the ping times are quite good they only add like 1-2ms from my normal 9-10ms but i have to use the non mullvad owned ones because for some reason those ones made me get like 50-100ms more ping idk what that is <br>
                     I do it because i dont like that my isp logs all of my traffic for 1 year and it doesnt really add any downsides except more captchas and a tiny bit more ping but tv streaming stuff doesnt work that has to go through the normal wan but i dont watch that so it doesnt matter for me
                     It is routed through OPNSense on my Z440 so it shows up as WAN2 and it takes some load off the ucg ultra</p>
                     <img src="images/wan2.png" alt="wan2" style="width: 300px;">
-                    <h2>Topology / Infrastructure</h2>
-                    <img src="images/infrastructure.png" alt="infrastructure" style="width: 550px;">
-                    <p>I probably need one main switch not 2 one for downstairs and one for upstairs both from the built in one maybe a Flex Mini 2.5g</p>
+                    <p>Everything is plugged into the USW-24 and some of them are running over powerline with 5 TL-PA8010ps because i cant get wires to them and mesh was unreliable the powerline is like 50-100mbps lower bandwidth than mesh but at least it works properly<br>
+                    It also passes through vlan tags so i can still use vlans without it breaking</p>
                 </td>
             </tr>
         </table>
