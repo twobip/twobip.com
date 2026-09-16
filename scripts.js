@@ -36,10 +36,16 @@
         { name: "ADS-B", url: "adsb.html" },
         { name: "Photography", url: "photography.html" },
         { name: "Status Page", url: "https://status.twobip.com" },
-        { name: "Cool Links", url: "links.html" }
+        { name: "Cool Links", url: "links.html" },
+        { name: "Gumazon", url: "https://gumazon.twobip.com" }
     ];
 
     const newsItems = [
+        {
+            title: "Gumazon release",
+            date: "September 16, 2026 at 11:44 PM",
+            content: "Gumazon has now released with 38 tatty products it is on the sidebar"
+        },
         {
             title: "August wigle stats",
             date: "September 16, 2026 at 11:37 PM",
