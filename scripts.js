@@ -42,6 +42,11 @@
 
     const newsItems = [
         {
+            title: "September + October wiggles",
+            date: "November 26, 2026 at 9:24 PM",
+            content: "I forgot to do the wigle stats for september and october because the wiggler is broken so i kinda forgot about it"
+        },
+        {
             title: "Gumazon release",
             date: "September 16, 2026 at 11:44 PM",
             content: "Gumazon has now released with 38 tatty products it is on the sidebar"
