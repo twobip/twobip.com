@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text unescaper on twobip.com</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tool-box { display: flex; gap: 15px; flex-wrap: wrap; }
+        .tool-box > div { flex: 1 1 300px; }
+        .tool-box label { display: block; color: #00ffff; font-weight: bold; margin-bottom: 5px; }
+        .tool-box textarea {
+            width: 100%; box-sizing: border-box; min-height: 240px; padding: 8px;
+            background-color: #000000; color: #00ff00; border: 2px inset #404040;
+            font-family: "Courier New", Courier, monospace; font-size: 14px;
+        }
+        .tool-button {
+            background-color: #333333; color: #00ffff; border: 2px outset #404040;
+            padding: 5px 15px; font-weight: bold; cursor: pointer; font-size: 14px;
+        }
+        .tool-button:hover { border-style: inset; }
+        #copy-status { color: #888888; margin-left: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="marquee-container">
+                <div id="marquee-text" class="marquee-text">twobip.com text tool</div>
+            </div>
+        </div>
+
+        <table class="main-table">
+            <tr>
+                <td id="sidebar-container" class="sidebar">
+                    <!-- Sidebar will be injected by scripts.js -->
+                </td>
+                <td class="content">
+                    <h1>Text unescaper</h1>
+                    <p>
+                        Paste text with <code>\n</code> in it and it turns them into actual new lines.
+                        It also does <code>\t</code>, <code>\r</code>, <code>\"</code> and <code>\\</code>.
+                        It updates as you type.
+                    </p>
+
+                    <div class="tool-box">
+                        <div>
+                            <label for="tool-in">Text with \n in it</label>
+                            <textarea id="tool-in" placeholder="hello\nworld" spellcheck="false"></textarea>
+                        </div>
+                        <div>
+                            <label for="tool-out">Text with real new lines</label>
+                            <textarea id="tool-out" readonly spellcheck="false"></textarea>
+                        </div>
+                    </div>
+
+                    <p>
+                        <button id="copy-button" class="tool-button" type="button">Copy output</button>
+                        <button id="clear-button" class="tool-button" type="button">Clear</button>
+                        <span id="copy-status"></span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <div class="footer">
+            <p>
+                Visitor Count: <span class="counter">seven</span>
+            </p>
+            <p>
+                This page is best viewed with
+                <img src=images/netscape.gif alt="Netscape">
+            </p>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        (function() {
+            const escapes = { n: "\n", r: "\r", t: "\t", '"': '"', "\\": "\\" };
+            const input = document.getElementById("tool-in");
+            const output = document.getElementById("tool-out");
+
+            function unescapeText(text) {
+                return text.replace(/\\([nrt"\\])/g, (match, ch) => escapes[ch]);
+            }
+
+            input.addEventListener("input", () => {
+                output.value = unescapeText(input.value);
+            });
+
+            document.getElementById("copy-button").addEventListener("click", async () => {
+                const status = document.getElementById("copy-status");
+                try {
+                    await navigator.clipboard.writeText(output.value);
+                    status.textContent = "copied";
+                } catch (e) {
+                    output.select();
+                    status.textContent = output.value ? "select it and press ctrl+c" : "nothing to copy";
+                }
+            });
+
+            document.getElementById("clear-button").addEventListener("click", () => {
+                input.value = "";
+                output.value = "";
+                document.getElementById("copy-status").textContent = "";
+                input.focus();
+            });
+        })();
+    </script>
+</body>
+</html>
